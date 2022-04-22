@@ -1,25 +1,10 @@
-var express = require("express");
+const express = require("express");
+const router = require('./routes');
 
-var app = express();
+const app = express();
 
-app.use(express.static("public"));
+app.use('/', router);
 
-app.set("view engine", "ejs");
-app.set("views", "./views");
-
-app.listen(3000);
-
-app.get("/", function(request, response)  {
-   
-    response.render("homePage");
-});
-
-app.get("/test", function(request, response)  {
-   
-    response.render("TestPages");
-});
-
-app.get("/autht", function(request, response)  {
-   
-    response.render("auth.js");
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
 });
